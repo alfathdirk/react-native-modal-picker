@@ -70,9 +70,11 @@ export default class RNModalPicker extends PureComponent {
     let newData = [];
     if (searchText) {
       newData = data.filter(function(item) {
-        const itemData = item.name.toUpperCase();
-        const textData = searchText.toUpperCase();
-        return itemData.startsWith(textData);
+        if(item.name) {
+          const itemData = item.name.toUpperCase();
+          const textData = searchText.toUpperCase();
+          return itemData.startsWith(textData);
+        }
       });
       this.setState({
         dataSource: [...newData]
